@@ -606,11 +606,13 @@ LanceDB 表 `memories`：
 <a href="https://github.com/Minidoracat"><img src="https://avatars.githubusercontent.com/u/11269639?v=4" width="48" height="48" alt="@Minidoracat" /></a>
 <a href="https://github.com/furedericca-lab"><img src="https://avatars.githubusercontent.com/u/263020793?v=4" width="48" height="48" alt="@furedericca-lab" /></a>
 <a href="https://github.com/joe2643"><img src="https://avatars.githubusercontent.com/u/19421931?v=4" width="48" height="48" alt="@joe2643" /></a>
+<a href="https://github.com/AliceLJY"><img src="https://avatars.githubusercontent.com/u/136287420?v=4" width="48" height="48" alt="@AliceLJY" /></a>
 </p>
 
 - [@win4r](https://github.com/win4r)（3 次提交）
 - [@kctony](https://github.com/kctony)（2 次提交）
 - [@Akatsuki-Ryu](https://github.com/Akatsuki-Ryu)（1 次提交）
+- [@AliceLJY](https://github.com/AliceLJY)（1 次提交）
 - [@JasonSuz](https://github.com/JasonSuz)（1 次提交）
 - [@Minidoracat](https://github.com/Minidoracat)（1 次提交）
 - [@furedericca-lab](https://github.com/furedericca-lab)（1 次提交）
