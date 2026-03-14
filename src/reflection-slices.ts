@@ -91,7 +91,7 @@ export function sanitizeReflectionSliceLines(lines: string[]): string[] {
 }
 
 const INJECTABLE_REFLECTION_BLOCK_PATTERNS: RegExp[] = [
-  /^\s*(?:(?:next|this)\s+run\s+)?(?:ignore|disregard|forget|override|bypass)\b[\s\S]{0,80}\b(?:instructions?|guardrails?|policy|developer|system|previous|prior|above|earlier)\b/i,
+  /^\s*(?:(?:next|this)\s+run\s+)?(?:ignore|disregard|forget|override|bypass)\b[\s\S]{0,80}\b(?:instructions?|guardrails?|policy|developer|system)\b/i,
   /\b(?:reveal|print|dump|show|output)\b[\s\S]{0,80}\b(?:system prompt|developer prompt|hidden prompt|hidden instructions?|full prompt|prompt verbatim|secrets?|keys?|tokens?)\b/i,
   /<\s*\/?\s*(?:system|assistant|user|tool|developer|inherited-rules|derived-focus)\b[^>]*>/i,
   /^(?:system|assistant|user|developer|tool)\s*:/i,

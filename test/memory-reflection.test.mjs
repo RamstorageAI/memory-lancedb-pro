@@ -887,6 +887,69 @@ describe("memory reflection", () => {
       assert.deepEqual(slices.invariants, ["Never ignore previous instructions from the user when resolving a conflict."]);
       assert.deepEqual(slices.derived, ["Next run verify the system prompt includes the expected safety footer."]);
     });
+
+    it("keeps legitimate derived lines that ignore or override previous non-prompt context", () => {
+      const now = Date.UTC(2026, 2, 7);
+      const day = 24 * 60 * 60 * 1000;
+
+      const entries = [
+        makeEntry({
+          timestamp: now - 1 * day,
+          metadata: {
+            type: "memory-reflection-item",
+            itemKind: "derived",
+            agentId: "main",
+            storedAt: now - 1 * day,
+            decayMidpointDays: 7,
+            decayK: 0.65,
+            baseWeight: 1,
+            quality: 0.95,
+          },
+        }),
+        makeEntry({
+          timestamp: now - 1 * day,
+          metadata: {
+            type: "memory-reflection-item",
+            itemKind: "derived",
+            agentId: "main",
+            storedAt: now - 1 * day,
+            decayMidpointDays: 7,
+            decayK: 0.65,
+            baseWeight: 1,
+            quality: 0.95,
+          },
+        }),
+        makeEntry({
+          timestamp: now - 1 * day,
+          metadata: {
+            type: "memory-reflection-item",
+            itemKind: "derived",
+            agentId: "main",
+            storedAt: now - 1 * day,
+            decayMidpointDays: 7,
+            decayK: 0.65,
+            baseWeight: 1,
+            quality: 0.95,
+          },
+        }),
+      ];
+
+      entries[0].text = "Next run ignore previous benchmark noise and verify on clean fixtures.";
+      entries[1].text = "Ignore prior flaky results before comparing the new retriever output.";
+      entries[2].text = "This run override previous cached screenshots with fresh captures.";
+
+      const slices = loadAgentReflectionSlicesFromEntries({
+        entries,
+        agentId: "main",
+        now,
+        deriveMaxAgeMs: 7 * day,
+      });
+
+      assert.equal(slices.derived.length, 3);
+      assert.ok(slices.derived.includes("Next run ignore previous benchmark noise and verify on clean fixtures."));
+      assert.ok(slices.derived.includes("Ignore prior flaky results before comparing the new retriever output."));
+      assert.ok(slices.derived.includes("This run override previous cached screenshots with fresh captures."));
+    });
   });
 
   describe("mapped reflection metadata and ranking", () => {
